@@ -1,0 +1,129 @@
+{% extends 'base.html' %} {% block content %}
+<div class="card text-center" id="main_card">
+    <h1>Machine Learning: Clustering</h1>
+    <div class="row"></div>
+    <div class="row">
+        <div class="col-md-12 text-center" id="desc_col">
+            <div class="card" id="description_card">
+                <div class="row text-center">
+                    <div class="col-md-3 text-left" id="text_card">
+                        <h2>Overview:</h2>
+                        <p>Clustering is a main task of exploratory data mining that involves dividing the population or data points with similar characteristics and assigning them into clusters. Clustering is a unsupervised learning method and is a common
+                            technique for statistical data analysis. The output of the algorithm would be a set of “labels” assigning each point to one of the clusters.
+
+                        </p>
+                    </div>
+                    <div class="col-md-3 text-left" id="text_card">
+
+                        <h2>Real life example:</h2>
+                        <li>Identifying groups of houses according to their characteristics.</li>
+                        <li>Classification of plants and animals given their features.</li>
+                        <li>Customer segmentation.</li>
+                        <li>Classify the crimes based on age groups.</li>
+                    </div>
+                    <div class="col-md-2 text-left" id="text_card">
+                        <h2>Preprocessing:</h2>
+                        {% for element in algorithm_preprocessors %}
+                        <li> {{element}} </li>
+                        {% endfor %}
+                    </div>
+                    <div class="col-md-2 text-left" id="text_card">
+                        <h2>Possible issues:</h2>
+                        {% for element in algorithm_issues %}
+                        <li>{{element}}</li>
+                        {% endfor %}
+                    </div>
+                    <div class="col-md-2 text-left" id="text_card">
+                        <h2>Read more:</h2>
+                        <li><a target="_blank" href="https://medium.com/machine-learning-bites/machine-learning-unsupervised-learning-clustering-d686af2466e1">ML: Clustering</a></li>
+                        <li><a target="_blank" href="https://www.analyticsvidhya.com/blog/2016/11/an-introduction-to-clustering-and-different-methods-of-clustering/">An Introduction to Clustering</a></li>
+                        <li><a target="_blank" href="https://towardsdatascience.com/the-5-clustering-algorithms-data-scientists-need-to-know-a36d136ef68">Towards Data Science</a></li>
+                        <li><a target="_blank" href="https://www.geeksforgeeks.org/clustering-in-machine-learning/">Clustering in Machine Learning</a></li>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row"></div>
+    <h1>ML Regression in Action</h1>
+    <div class="row"></div>
+    <div class="row">
+        <div class="col-md-4 text-left">
+            <div class="card" id="description_card">
+                <h2>Description:</h2>
+                <br>
+                <h4>No. of Rows: {{rows}}</h4>
+                <h4>No. of Columns: {{columns}}</h4>
+
+            </div>
+            <br>
+            <div class="card" id="description_card">
+                <h2>Statistical Data:</h2>
+                <br> <br>{{describe | safe}}
+                <br>
+                <ol></ol>
+            </div>
+        </div>
+        <div class="col-md-8 text-left">
+
+            <div class="card" id="description_card">
+                <h2 style="margin-left:0px">Business Case:</h2>
+                <h1></h1>
+                <p>One of the biggest shopping malls in the city collects information about their membership card subscribers. Database contains various columns like age, gender or annual income. Last column in a database is a spending score, computed for
+                    each client based on several criteria like money spent or weekly visits. We have been hired to segment mall clients into groups based on their annual income and spending score. We have to determine how many groups there would be and
+                    label them.
+                </p>
+
+            </div>
+            <br>
+            <div class="card" id="description_card">
+                <h2>Dataset Head:</h2>
+                <br> {{data | safe}}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 text-center" id="desc_col">
+            <div class="card" id="description_card">
+                <h2>Data Question:</h2>
+                <p>Can we group subscribers the way that will help mall management readjust their advertisement strategy?</p>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 text-center">
+            <div class="card" id="algorithm">
+                <h2>Choose Algorithm:</h2>
+                <br>
+                <br>
+                 <br>
+                <a href="{{url_for('algorithms.clusterer', clusterer_id='k-means_clustering')}}" class="waves-effect waves-light btn-large" id="navigation">K-Means Clustering</a>
+                <br>
+                 <br>
+                <a href="{{url_for('algorithms.clusterer', clusterer_id='hierarchical_clustering')}}" class="waves-effect waves-light btn-large" id="navigation">Hierarchical Clusters</a>
+                <br>
+                <ol></ol>
+            </div>
+
+        </div>
+        <div class="col-md-3 text-center">
+            <div class="card" id="pyplot">
+                <h2>Determining number of clusters:</h2>
+                <img src="{{url_for('static', filename='img/{}-determine.svg'.format(choice))}}" id="plot-determine" alt="plot">
+            </div>
+        </div>
+        <div class="col-md-6 text-center">
+            <div class="card" id="pyplot">
+                <h2>Visualisation:</h2>
+                <img src="{{url_for('static', filename='img/{}.svg'.format(choice))}}" id="plot" alt="plot">
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+{% endblock %}

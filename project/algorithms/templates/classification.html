@@ -1,0 +1,136 @@
+{% extends 'base.html' %} {% block content %}
+<div class="card text-center" id="main_card">
+    <h1>Machine Learning: Classification</h1>
+    <div class="row"></div>
+    <div class="row">
+        <div class="col-md-12 text-center" id="desc_col">
+            <div class="card" id="description_card">
+                <div class="row text-center">
+                    <div class="col-md-3 text-left" id="text_card">
+                        <h2>Overview:</h2>
+                        <p>Classification identifies to which of a set of categories a new observation belongs. Classification problem is an example of pattern recognition that predict a  
+                        probability of a given example belonging to each output class. The output variables are often <br> called labels or categories.
+                        </p>
+                    </div>
+                    <div class="col-md-3 text-left" id="text_card">
+
+                        <h2>Real life example:</h2>
+                        <li>Email spam detector</li>
+                        <li>Handwritten Digit Recognition.</li>
+                        <li>Speech Recognition.</li>
+                        <li>DNA Sequence Classification.</li>
+                    </div>
+                    <div class="col-md-2 text-left" id="text_card">
+                        <h2>Preprocessing:</h2>
+                        {% for element in algorithm_preprocessors %}
+                        <li> {{element}} </li>
+                        {% endfor %}
+                    </div>
+                    <div class="col-md-2 text-left" id="text_card">
+                        <h2>Possible issues:</h2>
+                        {% for element in algorithm_issues %}
+                        <li>{{element}}</li>
+                        {% endfor %}
+                    </div>
+                    <div class="col-md-2 text-left" id="text_card">
+                        <h2>Read more:</h2>
+                        <li><a target="_blank" href="https://machinelearningmastery.com/classification-versus-regression-in-machine-learning/">Machine Learning Mastery</a></li>
+                        <li><a target="_blank" href="https://www.geeksforgeeks.org/regression-classification-supervised-machine-learning/">GeeksforGeeks</a></li>
+                        <li><a target="_blank" href="https://www.youtube.com/watch?v=f7YB73F0zDo">ML Introduction: Classification</a></li>
+                        <li><a target="_blank" href="https://www.datascience.com/blog/regression-and-classification-machine-learning-algorithms">Regression vs. Classification</a></li>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row"></div>
+    <h1>ML Regression in Action</h1>
+    <div class="row"></div>
+    <div class="row">
+        <div class="col-md-4 text-left">
+            <div class="card" id="description_card">
+                <h2>Description:</h2>
+                <br>
+                <h4>No. of Rows: {{rows}}</h4>
+                <h4>No. of Columns: {{columns}}</h4>
+
+            </div>
+            <br>
+            <div class="card" id="description_card">
+                <h2>Statistical Data:</h2>
+
+                <br> <br>{{describe | safe}}
+                <br>
+                <ol></ol>
+            </div>
+        </div>
+        <div class="col-md-8 text-left">
+
+            <div class="card" id="description_card">
+                <h2 style="margin-left:0px">Business Case:</h2>
+                <h1></h1>
+                <p>We are Social Network Data Science Department. One of our clients is a luxury watch company that has just launched brand new line of a products. We have been approached with a question if we can predict 
+                which characteristics can determine if social network user will be more likely to buy a new product. Our model will be based on dataset which contains user characteristics. Last column contains information if user bought product (1) or not (0). 
+                </p>
+
+            </div>
+            <br>
+            <div class="card" id="description_card">
+                <h2>Dataset Head:</h2>
+                <br> {{data | safe}}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 text-center" id="desc_col">
+            <div class="card" id="description_card">
+                <h2>Data Question:</h2>
+                <p>"Based on Age and Estimated Salary, can we predict if user would buy a watch?"</p>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 text-center">
+            <div class="card" id="algorithm">
+                <h2>Choose Algorithm:</h2>
+                <br>
+                <br>
+                 <br>
+                <a href="{{url_for('algorithms.classifier', classifier_id='k-nearest_neighbors')}}" class="waves-effect waves-light btn-large" id="navigation">K-Nearest Neighbors</a>
+                <br>
+                 <br>
+                <a href="{{url_for('algorithms.classifier', classifier_id='kernel_svm')}}" class="waves-effect waves-light btn-large" id="navigation">Kernel SVM</a>
+                <br>
+                 <br>
+                <a href="{{url_for('algorithms.classifier', classifier_id='naive_bayes')}}" class="waves-effect waves-light btn-large" id="navigation">Naive Bayes</a>
+                <br>
+                <ol></ol>
+            </div>
+
+        </div>
+        <div class="col-md-6 text-center">
+            <div class="card" id="pyplot">
+                <h2>Visualisation:</h2>
+                <img src="{{url_for('static', filename='img/{}.svg'.format(classifier_id))}}" id="plot" alt="plot">
+            </div>
+
+        </div>
+        <div class="col-md-3 text-left">
+            <div class="card" id="algorithm">
+                <h2>Confusion Matrix:</h2>
+                <br> <br> {{cma | safe}}
+                <br> <br> 
+                <h2 style="display:inline">Algorithm Accuracy:</h2>
+
+                <p style="display:inline; margin-left:-12px;" id="accuracy">{{ acc }}</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+{% endblock %}

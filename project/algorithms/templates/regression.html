@@ -1,0 +1,132 @@
+{% extends 'base.html' %} {% block content %}
+<div class="card text-center" id="main_card">
+    <h1>Machine Learning: Regression</h1>
+    <div class="row"></div>
+    <div class="row">
+        <div class="col-md-12 text-center" id="desc_col">
+            <div class="card" id="description_card">
+                <div class="row text-center">
+                    <div class="col-md-3 text-left" id="text_card">
+                        <h2>Overview:</h2>
+                        <p>Regression is a basic and commonly used type of predictive analysis. It investigates the relationship between a dependent and independent variable. Regression problem requires the prediction of a quantity, such as amounts and
+                            sizes. An output variable is a real-value - an integer or floating point value.
+                        </p>
+                    </div>
+                    <div class="col-md-3 text-left" id="text_card">
+
+                        <h2>Real life example:</h2>
+                        <li>Examine last month's customer service calls drop.</li>
+                        <li>Predict monthly gift card sales.</li>
+                        <li>Predict potential clients who might default.</li>
+                        <li>Describe impact of product price on number of sales.</li>
+                    </div>
+                    <div class="col-md-2 text-left" id="text_card">
+                        <h2>Preprocessing:</h2>
+                        {% for element in algorithm_preprocessors %}
+                        <li> {{element}} </li>
+                        {% endfor %}
+                    </div>
+                    <div class="col-md-2 text-left" id="text_card">
+                        <h2>Possible issues:</h2>
+                        {% for element in algorithm_issues %}
+                        <li>{{element}}</li>
+                        {% endfor %}
+                    </div>
+                    <div class="col-md-2 text-left" id="text_card">
+                        <h2>Read more:</h2>
+                        <li><a target="_blank" href="https://machinelearningmastery.com/classification-versus-regression-in-machine-learning/">Machine Learning Mastery</a></li>
+                        <li><a target="_blank" href="https://www.geeksforgeeks.org/regression-classification-supervised-machine-learning/">GeeksforGeeks</a></li>
+                        <li><a target="_blank" href="https://www.youtube.com/watch?v=f7YB73F0zDo">ML Introduction: Regression</a></li>
+                        <li><a target="_blank" href="https://towardsdatascience.com/selecting-the-best-machine-learning-algorithm-for-your-regression-problem-20c330bad4ef">Towards Data Science</a></li>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row"></div>
+    <h1>ML Regression in Action</h1>
+    <div class="row"></div>
+    <div class="row">
+        <div class="col-md-4 text-left">
+            <div class="card" id="description_card">
+                <h2>Description:</h2>
+                <br>
+                <h4>No. of Rows: {{rows}}</h4>
+                <h4>No. of Columns: {{columns}}</h4>
+
+            </div>    
+            <br>
+            <div class="card" id="description_card">    
+                <h2>Statistical Data:</h2>
+            
+                <br> <br>{{describe | safe}}
+                <br> <ol></ol>
+            </div>
+        </div>
+        <div class="col-md-8 text-left">
+            
+                <div class="card" id="description_card">
+                    <h2 style="margin-left:0px">Business Case:</h2>
+                    <h1></h1>
+                    <p>HR team are about to hire a new employee and they are about to make a salary offer. New employee has over 20 years of experience and he claims that his previous salary was 160K/annum. Before making final offer HR decided to check candidate
+                        story. All the info that we manage to get is the salary brackets for different levels and that our candidate <br>was half-way between level 6 & 7:
+                    </p>
+
+                </div>
+                <br>
+                <div class="card" id="description_card">
+                    <h2>Dataset:</h2>
+                    <br> {{data | safe}}
+                </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 text-center" id="desc_col">
+            <div class="card" id="description_card">
+                <h2>Data Question:</h2>
+                <p>"Based on gathered data, can we estimate what was a salary of our candidate in a previous job?"</p>
+               
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 text-center">
+            <div class="card" id="algorithm">
+                <h2>Choose Algorithm:</h2>
+                <br>
+                <br>
+                 <br>
+                <a href="{{url_for('algorithms.regressor', regressor_id='polynomial_regression')}}" class="waves-effect waves-light btn-large" id="navigation">Polynomial Regression</a>
+                <br>
+                 <br>
+                <a href="{{url_for('algorithms.regressor', regressor_id='svr')}}" class="waves-effect waves-light btn-large" id="navigation">SVR</a>
+                <br>
+                 <br>
+                <a href="{{url_for('algorithms.regressor', regressor_id='randomforest')}}" class="waves-effect waves-light btn-large" id="navigation">Randomforest</a>
+                <br>
+                <ol></ol>
+            </div>
+
+        </div>
+        <div class="col-md-6 text-center">
+            <div class="card" id="pyplot">
+                <h2>Visualisation: </h2>
+                <img src="{{url_for('static', filename='img/{}.svg'.format(choice))}}" id="plot" alt="plot">
+            </div>
+
+        </div>
+        <div class="col-md-3 text-left">
+            <div class="card" id="algorithm">
+                <h2>Salary Estimation:</h2>
+                <br>
+                    <p style="display:inline; margin-left:-12px;">Estimated salary was:</p><h2 style="display:inline">{{ single_prediction }}<h2>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+{% endblock %}
