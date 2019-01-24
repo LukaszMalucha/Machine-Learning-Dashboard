@@ -39,6 +39,8 @@ pandas | numpy | matplotlib | seaborn
 sklearn | scipy
 ##### Database Development:
 SQLite
+##### Testing
+selenium | unittest
 ##### Web Development:
 HTML | CSS | Bootstrap | Materialize | JavaScript | JQuery
 
@@ -121,39 +123,7 @@ Password: testtest
 
 ### Test Files:
 
-##### test.py
-
-### Manual Tests:
-
-#### Login/Signin Form Test:
-1. Is data properly saved in database
-2. Are different templates properly routing to signup and login urls
-3. Are form fields values properly validated (example: email field)
-4. Is password properly hashed in a signup file
-
-#### Main Dashboard:
-1. Is database populating tables/columns correctly
-2. Button functionality (edit/delete/download/routing)
-3. Datatable features working properly (pagination/scaling/headers)
-4. Github repo projects displaying properly. Repos searchability
-
-
-#### Add template/Edit template
-1. Fields properly connected to the database
-2. Forms are populating database correctly
-3. Accepted input file
-4. Missing Input test
-
- 
-#### Summary Classification/Regression/Clustering
-1. Algotypes database populating fields properly
-2. Pandas dataframe gives correct information about dataset
-3. "Choose algorithm" displays proper options
-4. Plot visualisation correct
-5. Algorithm results correct
-
-#### App Responsivity: 
-1. Done with Inspect element tool as a last part of the test suite
+#### /tests
 
 
 ## CREDITS & INSPIRATIONS
