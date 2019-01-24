@@ -16,6 +16,13 @@ from project.algorithms.models import *
 ALLOWED_EXTENSIONS = set(['py'])
 
 
+## User Login
+@library_blueprint.context_processor
+def context_processor():
+    current_user = session.get('current_user') or 'Guest'
+    return dict(current_user=current_user)
+
+
 ########################################################################## MAIN DASHBOARD ###################################################################################################################    
 
 
@@ -25,10 +32,9 @@ ALLOWED_EXTENSIONS = set(['py'])
 def library():
     codes = CodeRepo.query.all()
     types = TypeModel.query.all()
-    current_user = session.get('current_user') or 'Guest'
 
-    return render_template("library.html", codes=codes, types=types
-                           , current_user=current_user)
+
+    return render_template("library.html", codes=codes, types=types)
 
 
 ## DOWNLOAD TEMPLATE ################################################################
@@ -52,10 +58,9 @@ def add_request():
     types = TypeModel.query.all()
     complexities = ComplexityModel.query.all()
     methods = MethodModel.query.all()
-    current_user = session.get('current_user') or 'Guest'
 
     return render_template('add_request.html', types=types, complexities=complexities,
-                           methods=methods, current_user=current_user)
+                           methods=methods)
 
 
 ## DEFINE ALLOWED TEMPLATE FILE FORMAT ##############################################   
@@ -70,19 +75,18 @@ def allowed_file(filename):
 @library_blueprint.route('/new_code', methods=['POST'])
 def new_code():
     codes = CodeRepo.query.all()
-    current_user = session.get('current_user') or 'Guest'
 
     ## Exceptions handling:
 
     if not 'inputFile' in request.files:
-        return render_template('error.html', current_user=current_user)
+        return render_template('error.html')
 
     if not 'type_of_algorithm' in request.form or not 'complexity' in request.form:
-        return render_template('error.html', current_user=current_user)
+        return render_template('error.html')
     if not 'method' in request.form:
-        return render_template('error.html', current_user=current_user)
+        return render_template('error.html')
     if request.form['name'] == '' or request.form['author'] == '':
-        return render_template('error.html', current_user=current_user)
+        return render_template('error.html')
 
     ## All good
     else:
@@ -90,7 +94,7 @@ def new_code():
         if code_file and allowed_file(code_file.filename):
             code_file = code_file.read()
         else:
-            return render_template('error.html', current_user=current_user)
+            return render_template('error.html')
 
         code = CodeRepo(name=request.form['name'],
                         type_of_algorithm=request.form['type_of_algorithm'],
@@ -112,18 +116,15 @@ def edit_code(code_id):
     types = TypeModel.query.all()
     complexities = ComplexityModel.query.all()
     methods = MethodModel.query.all()
-    current_user = session.get('current_user') or 'Guest'
 
     return render_template('edit_code.html', code=the_code, types=types,
-                           complexities=complexities, methods=methods,
-                           current_user=current_user)
+                           complexities=complexities, methods=methods)
 
 
 ## UPDATE TEMPLATE HANDLING #########################################################
 
 @library_blueprint.route('/update_code/<code_id>', methods=["POST"])
 def update_code(code_id):
-    current_user = session.get('current_user') or 'Guest'
     the_code = CodeRepo.query.filter_by(id=code_id).first()
 
     the_code.name = request.form['name']
@@ -144,7 +145,7 @@ def update_code(code_id):
             db.session.commit()
             return redirect(url_for("library.library"))
         else:
-            return render_template('error.html', current_user=current_user)
+            return render_template('error.html')
 
     ## All good
 
@@ -168,11 +169,10 @@ def delete_code(code_id):
 
 @library_blueprint.route('/manage_db')
 def manage_db():
-    current_user = session.get('current_user') or 'Guest'
 
     types = AlgorithmModel.query.all()
 
-    return render_template('manage_db.html', current_user=current_user, types=types)
+    return render_template('manage_db.html', types=types)
 
 
 @library_blueprint.route('/add_algorithm_type', methods=['POST'])
