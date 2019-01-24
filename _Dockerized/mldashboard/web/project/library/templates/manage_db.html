@@ -1,0 +1,117 @@
+{% extends 'base.html' %} {% block content %}
+
+
+<div class="row">
+    <div class="col-md-1 text-left"></div>
+    <div class="col-md-3 text-left" style="margin-right: 50px">
+        <form action="{{url_for('library.add_algorithm_type') }}" method="POST" enctype="multipart/form-data" id="add_algorithm_type_form" class="col s12">
+            <div class="card" id="title_card">
+                <div class="col-md-6 text-left">
+                    <h4 id = "db_fill">Add Algorithm Type:</h4>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12" id="field">
+                        <i class="material-icons prefix">assignment</i>
+                        <input id="type" name="type" type="text" class="validate" required>
+                        <label for="icon_prefix">Type</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row">
+                        <button class="btn waves-effect waves-light" type="submit" name="action" id="type">ADD</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-3 text-left" style="margin-right: 50px">
+        <form action="{{url_for('library.add_complexity') }}" method="POST" id="add_complexity_form" class="col s12">
+            <div class="card" id="title_card">
+                <div class="col-md-6 text-left">
+                    <h4 id = "db_fill">Add Complexity:</h4>
+                </div>
+                <div class="row"></div>
+                <div class="row">
+                    <div class="input-field col s12" id="field">
+                        <i class="material-icons prefix">assignment</i>
+                        <input id="complexity" name="complexity" type="text" class="validate" required>
+                        <label for="icon_prefix">Complexity</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="row">
+                        <button class="btn waves-effect waves-light" type="submit" name="action" id="complexity">ADD</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-3 text-left" style="margin-right: 50px">
+        <form action="{{url_for('library.add_method') }}" method="POST" enctype="multipart/form-data" id="add_method_form" class="col s12">
+            <div class="card" id="title_card">
+                <div class="col-md-6 text-left">
+                    <h4 id = "db_fill">Add Method:</h4>
+                </div>
+                <div class="row"></div>
+                <div class="row">
+                    <div class="input-field col s12" id="field">
+                        <i class="material-icons prefix">assignment</i>
+                        <input id="method" name="method" type="text" class="validate" required>
+                        <label for="icon_prefix">Method</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row">
+                        <button class="btn waves-effect waves-light" type="submit" name="action" id="method">ADD</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+</div>
+<div class="row">
+    <div class="col-md-1 text-left"></div>
+
+<div class="col-md-3 text-left" style="margin-right: 50px">
+        <form action="{{url_for('library.add_algorithm') }}" method="POST" id="add_algorithm_form"class="col s12">
+            <div class="card" id="title_card">
+                <div class="col-md-6 text-left">
+                    <h4 id = "db_fill">Add Algorithm:</h4>
+                </div>
+                <div class="row"></div>
+                <div class="row">
+                    <div class="input-field col s12" id="field">
+                        <i class="material-icons prefix">assignment</i>
+                        <input id="algorithm_type" name="algorithm_type" type="text" class="validate" required>
+                        <label for="icon_prefix">AlgoType</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12" id="field">
+                        <i class="material-icons prefix">assignment</i>
+                        <input id="algorithm_preprocessors" name="algorithm_preprocessors" type="text" class="validate" required>
+                        <label for="icon_prefix">Preprocessers</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12" id="field">
+                        <i class="material-icons prefix">assignment</i>
+                        <input id="algorithm_issues" name="algorithm_issues" type="text" class="validate" required>
+                        <label for="icon_prefix">Issues</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row">
+                        <button class="btn waves-effect waves-light" type="submit" name="action" id="algo">ADD</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

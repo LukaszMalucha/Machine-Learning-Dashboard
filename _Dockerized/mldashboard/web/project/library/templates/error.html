@@ -1,0 +1,25 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="row"></div>
+<div class="row"></div>
+<div class="row"></div>
+<div class="row"></div>
+<div class="row"></div>
+
+<div class="row">
+    <div class="col-md-2 text-center"></div>
+    <div class="col-md-8 text-center">
+
+        <div class="card" id="title_card">
+            <div class="row">
+                <h2>Please fill out all required fields and make sure that uploaded file is *.py</h2>
+            </div>
+            <div class="row">
+                <a href="{{url_for('library.library')}}"  onclick="goBack()" class="waves-effect waves-light btn-large" id="navigation"><i class="large material-icons left">keyboard_return</i>Back to Template</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2 text-center"></div>
+</div>
+
+{% endblock %}

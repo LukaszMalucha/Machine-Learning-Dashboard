@@ -1,0 +1,103 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="row">
+    <div class="col-md-6 text-left">
+        <form action="{{url_for('library.update_code', code_id=code.id) }}" method="POST" enctype="multipart/form-data" id="edit_code" class="col s12">
+            <div class="card" id="title_card">
+                <div class="col-md-6 text-left">
+                    <h3>Edit Template:</h3>
+                </div>
+                <div class="row"></div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">assignment</i>
+                        <input id="name" name="name" type="text" class="validate" value="{{code.name}}">
+                        <label id="field_label" for="icon_prefix">Model</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">storage</i>
+                        <select id="type_of_algorithm" name="type_of_algorithm">
+                  <option value="" disabled selected>Choose Type</option>
+                  {% for type in types %}
+                      {% if type.type_of_algorithm == code.type_of_algorithm%}
+                      <option value="{{type.type_of_algorithm}}" selected >{{type.type_of_algorithm}}</option>
+                      {% else %}
+                       <option value="{{type.type_of_algorithm}}">{{type.type_of_algorithm}}</option>
+                    {% endif %}
+                  {% endfor %}
+                </select>
+                        <label>Type of Algorithm</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">storage</i>
+                        <select id="complexity" name="complexity">
+                  <option value="" disabled selected>Choose Type</option>
+                  {% for grade in complexities %}
+                      {% if grade.complexity == code.complexity%}
+                      <option value="{{grade.complexity}}" selected >{{grade.complexity}}</option>
+                      {% else %}
+                       <option value="{{grade.complexity}}">{{grade.complexity}}</option>
+                    {% endif %}
+                  {% endfor %}
+                </select>
+                        <label>Complexity</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">storage</i>
+                        <select id="method" name="method">
+                  <option value="" disabled selected>Choose Method</option>
+                  {% for met in methods %}
+                      {% if met.method == code.method%}
+                      <option value="{{code.method}}" selected >{{met.method}}</option>
+                      {% else %}
+                       <option value="{{met.method}}">{{met.method}}</option>
+                    {% endif %}
+                  {% endfor %}
+                </select>
+                        <label>Learning Method</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">assignment</i>
+                        <input id="author" name="author" type="text" class="validate" value="{{code.author}}">
+                        <label id="field_label" for="icon_prefix">Author</label>
+                    </div>
+                </div>
+                <div class="row"></div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <div class="col-md-3 text-left" style="margin-left: -15px">
+                            <i class="material-icons prefix" style="display:inline">storage</i>
+                            <h3 style="margin-left: 30px; display:inline; backgroud-color: grey;">Add .py file:</h3>
+                        </div>
+                        <div class="col-md-1 text-left">
+                            <input type="file" name="inputFile">
+                        </div>
+                    </div>
+                    <div class="row"></div>
+                    <div class="row"></div>
+                    <div class="row"></div>
+                    <div class="row">
+                        <button class="btn waves-effect waves-light" type="submit" name="action" id="navigation">SAVE CHANGES</button>
+                    </div>
+                </div>
+        </form>
+        </div>
+    </div>
+</div>
+</div>
+<script>
+        $(document).ready(function() {
+            $('select').formSelect();
+        });
+</script>
+
+
+{% endblock %}
