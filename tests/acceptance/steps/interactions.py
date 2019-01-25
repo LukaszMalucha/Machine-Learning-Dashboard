@@ -87,8 +87,4 @@ def step_impl(context):
     page.submit_button.click()
 
 
-@when('I press the match estimator button')
-def step_impl(context):
-    page = BasePage(context.driver)
-    page.match_button.click()
 
