@@ -42,7 +42,7 @@ SQLite
 ##### Testing
 selenium | unittest
 ##### Web Development:
-HTML | CSS | Bootstrap | Materialize | JavaScript | JQuery
+HTML | CSS | Bootstrap | Materialize | JavaScript | JQuery | Docker
 
 
 ## Database Structure:
