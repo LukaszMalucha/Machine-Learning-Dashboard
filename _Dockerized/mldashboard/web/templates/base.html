@@ -20,6 +20,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <!-- Custom Styles-->
     <link href="{{url_for('static', filename='css/custom-styles.css')}}" rel="stylesheet" />
+    <link href="{{url_for('static', filename='css/navbar.css')}}" rel="stylesheet" />
      <!-- jQuery Js -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -43,14 +44,13 @@
          <!-- TOP NAVBAR -->
         <nav class="navbar navbar-default top-navbar" role="navigation">
             <div class="navbar-header">
-                <a class="navbar-brand waves-effect waves-dark" href="{{url_for('library.library')}}"><i class="large material-icons">blur_on</i><strong>ML Dashboard</strong></a>
+                <a class="navbar-brand waves-effect waves-dark" href="{{ url_for('library.library')}}"><i class="large material-icons">blur_on</i><strong>ML Dashboard</strong></a>
             </div>
 
             <ul class="nav navbar-top-links navbar-right">
-                <li><a class='dropdown-trigger btn' href='#' data-target='dropdown1' id="user_dropdown"><i class="fa fa-user fa-fw" id="top_icon"></i> <b>{{ current_user }}</b></a></li>
+                <a class='dropdown-trigger' href='#' data-target='dropdown1' id="user_dropdown"><i class="fa fa-user fa-fw" id="top_icon" style="color:#FFCB9A;"></i> <b>{{ current_user }}</b></a>
             </ul>
         </nav>
-        
         <!-- DROPDOWN -->
         <ul id="dropdown1" class="dropdown-content">
             <li><a href="{{ url_for('users.login') }}" id="dropdown_link"><i class="fa fa-user fa-fw" style="color:#FFCB9A;" ></i>Log In</a>
