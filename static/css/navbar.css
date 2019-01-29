@@ -155,7 +155,7 @@ nav ul a:hover {
 }
 
 
-@media(max-width:769px) {
+@media(max-width:952px) {
     .top-navbar {
         margin: 0px;
         padding:10px;
