@@ -89,6 +89,10 @@ def step_impl(context):
     page = RegressionPage(context.driver)
     assert len(page.navigation) == 3
 
+@then('The answer is "Suggested Machine Learning algorithms are: Naive Bayes & LinearSVC"')
+def step_impl(context):
+    page = BasePage(context.driver)
+    assert page.answer.text == "Suggested Machine Learning algorithms are: Naive Bayes & LinearSVC"
 
 @then('I can see there is a plot on the page')
 def step_impl(context):
