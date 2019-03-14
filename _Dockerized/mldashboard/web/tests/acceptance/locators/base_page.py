@@ -5,7 +5,7 @@ class BasePageLocators:
     TITLE = By.TAG_NAME, 'strong'
     NAV_LINKS =  By.ID, 'navigation'
     DROPDOWN = By.ID, 'user_dropdown'
-    DROPDOWN_LINKS = By.ID, 'dropdown_link'
+    DROPDOWN_LINKS = By.ID, 'trigger'
     PAGE = By.ID, 'page-index'
     TABLE = By.CLASS_NAME, 'table-responsive'
     GITHUB_USER = By.ID, 'gh-username'

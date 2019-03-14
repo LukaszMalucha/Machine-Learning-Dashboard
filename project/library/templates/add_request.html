@@ -2,7 +2,7 @@
 
 
 <div class="row">
-    <div class="col-md-6 text-left">
+    <div class="col-md-4 text-left">
         <form action="{{url_for('library.new_code') }}" method="POST" id="new_code" enctype="multipart/form-data" class="col s12">
             <div class="card" id="title_card">
                 <div class="col-md-6 text-left">
@@ -62,7 +62,7 @@
                 <div class="row"></div>
                 <div class="row">
                     <div class="input-field col s12" id="python_file">
-                        <div class="col-md-3 text-left">
+                        <div class="col-md-4 text-left no-padding-left">
                             <span><i class="material-icons prefix" style="display:inline; top:0.1rem;">storage</i>
                             <h3 style="margin-left: 30px; display:inline; backgroud-color: grey;">Add .py file:</h3></span>
                         </div>
@@ -71,10 +71,13 @@
                         </div>
                     </div>
                     <div class="row"></div>
-                    <div class="row"></div>
-                    <div class="row"></div>
+                     <div class="row"></div>
                     <div class="row">
+                        <div class="col-md-4 text-center"></div>
+                        <div class="col-md-4 text-center no-padding-left">
                         <button class="btn waves-effect waves-light" type="submit" name="action" id="navigation">ADD TEMPLATE</button>
+                        </div>
+                        <div class="col-md-4 text-center"></div>
                     </div>
                 </div>
             </div>
