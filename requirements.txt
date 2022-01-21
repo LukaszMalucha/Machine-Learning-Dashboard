@@ -10,7 +10,7 @@ flask-blueprint==1.2.7
 Flask-Bootstrap==3.3.7.1
 Flask-SQLAlchemy==2.3.2
 Flask-WTF==0.14.2
-ipython==7.2.0
+ipython==7.16.3
 ipython-genutils==0.2.0
 itsdangerous==1.1.0
 jedi==0.13.2
